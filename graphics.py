@@ -16,15 +16,15 @@ class Window:
     def wait_for_close(self):
         self.__running = True
 
-        while self.__running == True:
+        while self.__running:
             self.redraw()
         print("Window closed")
 
+    def draw_line(self, line, fill_color="white"):
+        line.draw(self.__canvas, fill_color)
+
     def close(self):
         self.__running = False
-
-    def draw_line(self, line, fill_color):
-        line.draw(self.__canvas, fill_color)
 
 class Point:
     def __init__(self, x, y):
@@ -36,5 +36,5 @@ class Line:
         self.p1 = p1
         self.p2 = p2
 
-    def draw(self, canvas, fill_color):
+    def draw(self, canvas, fill_color="white"):
         canvas.create_line(self.p1.x, self.p1.y, self.p2.x, self.p2.y, fill=fill_color, width=2)
